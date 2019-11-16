@@ -2,10 +2,13 @@
   "dependencies": {
     "@testing-library/dom": "^6.10.1",
     "@types/lodash": "^4.14.148",
+    "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.12.8",
     "@types/selenium-webdriver": "3",
     "expect": "^24.9.0",
+    "jimp": "^0.8.5",
     "lodash": "^4.17.15",
+    "mkdirp": "^0.5.1",
     "prescript": "^0.555555.0",
     "selenium-webdriver": "3",
     "ts-node": "^8.5.2",
