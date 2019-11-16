@@ -1,12 +1,8 @@
 import { action, to } from 'prescript'
 import { By } from 'selenium-webdriver'
-import { getDriver, query, useWebDriver } from '../lib'
+import { getDriver, query, useLoginPage } from '../lib'
 
-useWebDriver()
-
-action`Go to app`(async () => {
-  await getDriver().get('https://demo.applitools.com/hackathon.html')
-})
+useLoginPage()
 
 to`Verify UI elements`(async () => {
   action`Verify that the heading says "Login Form"'`(async () => {

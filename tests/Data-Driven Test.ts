@@ -1,13 +1,8 @@
 import { action, to } from 'prescript'
-import { By } from 'selenium-webdriver'
-import { getDriver, query, useWebDriver } from '../lib'
+import { getDriver, query, useLoginPage, login } from '../lib'
 import expect from 'expect'
 
-useWebDriver()
-
-action`Go to app`(async () => {
-  await getDriver().get('https://demo.applitools.com/hackathon.html')
-})
+useLoginPage()
 
 to`Verify when both Username and Password are blank`(() => {
   login('', '')
@@ -25,28 +20,11 @@ to`Verify when only Username is blank`(() => {
 })
 
 to`Verify when both Username and Password are present`(() => {
-  login('meow', 'nyan')
+  login()
   action`Verify that we are in the app`(async () => {
     await query(q => q.findByText(document.body, 'Financial Overview'))
   })
 })
-
-function login(username: string, password: string) {
-  action`Enter username "${username}"`(async () => {
-    const field = getDriver().findElement(By.css('#username'))
-    await field.clear()
-    await field.sendKeys(username)
-  })
-  action`Enter password "${password}"`(async () => {
-    const field = getDriver().findElement(By.css('#password'))
-    await field.clear()
-    await field.sendKeys(password)
-  })
-  action`Click "Log In"`(async () => {
-    const logInButton = await query(q => q.getByText(document.body, 'Log In'))
-    await logInButton.click()
-  })
-}
 
 function expectAlert(text: string) {
   action`Verify that there is an alert saying "${text}"`(async () => {
