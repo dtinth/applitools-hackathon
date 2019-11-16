@@ -1,28 +1,30 @@
-import { action, to } from 'prescript'
-import { getDriver, query, useLoginPage, login } from '../lib'
+import { action, to, independent } from 'prescript'
+import { query, useLoginPage, login } from '../lib'
 import expect from 'expect'
 
 useLoginPage()
 
-to`Verify when both Username and Password are blank`(() => {
-  login('', '')
-  expectAlert('Both Username and Password must be present')
-})
+independent(() => {
+  to`Verify when both Username and Password are blank`(() => {
+    login('', '')
+    expectAlert('Both Username and Password must be present')
+  })
 
-to`Verify when only Password is blank`(() => {
-  login('meow', '')
-  expectAlert('Password must be present')
-})
+  to`Verify when only Password is blank`(() => {
+    login('meow', '')
+    expectAlert('Password must be present')
+  })
 
-to`Verify when only Username is blank`(() => {
-  login('', 'nyan')
-  expectAlert('Username must be present')
-})
+  to`Verify when only Username is blank`(() => {
+    login('', 'nyan')
+    expectAlert('Username must be present')
+  })
 
-to`Verify when both Username and Password are present`(() => {
-  login()
-  action`Verify that we are in the app`(async () => {
-    await query(q => q.findByText(document.body, 'Financial Overview'))
+  to`Verify when both Username and Password are present`(() => {
+    login()
+    action`Verify that we are in the app`(async () => {
+      await query(q => q.findByText(document.body, 'Financial Overview'))
+    })
   })
 })
 

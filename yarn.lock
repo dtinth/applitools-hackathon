@@ -1704,10 +1704,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-prescript@^0.555555.0:
-  version "0.555555.0"
-  resolved "https://registry.yarnpkg.com/prescript/-/prescript-0.555555.0.tgz#e002f7d5f1ebb572eb0e2f3a1348ce8c74fab074"
-  integrity sha512-aiVTTmAbVMdiwDhTL1kiOKJlWPq5GoYN5h+JuO2eEj/msVANy4WKUFlAxebFtMRy2NZ8lKaHAxg4yqRajViy3w==
+prescript@0.5555555.0-1:
+  version "0.5555555.0-1"
+  resolved "https://registry.yarnpkg.com/prescript/-/prescript-0.5555555.0-1.tgz#31191f3c7d542ac611ba16fae7f0edccfbfabd98"
+  integrity sha512-tACngHPwdrxI6GM+rU0Z5uRFbA7zl7BVChwx/hoKjKIanbvNVZi9uFcDXd57TY1FBem1yjqDAhMKCbmpa81dOQ==
   dependencies:
     "@types/cosmiconfig" "^5.0.3"
     allure-js-commons "^1.2.1"

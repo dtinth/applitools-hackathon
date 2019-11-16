@@ -7,18 +7,20 @@ import _ from 'lodash'
 useApp()
 
 to`Verify that sorting works properly`(() => {
-  action`Remember data before sorting`(async () => {
+  action`Remember table data before sorting`(async () => {
     getCurrentState().rows = await getTableRows()
   })
   action`Click on Amount header`(async () => {
     const amountHeader = await query(q => q.getByText(document.body, 'Amount'))
     await amountHeader.click()
   })
-  action`Verify correct data`(async () => {
-    const prevRows = (await getCurrentState().rows) as string[][]
-    const curRows = await getTableRows()
-    expect(curRows).toEqual(_.sortBy(prevRows, amountOfRow))
-  })
+  action`Verify that rows are really sorted by amount and that all data is intact`(
+    async () => {
+      const prevRows = (await getCurrentState().rows) as string[][]
+      const curRows = await getTableRows()
+      expect(curRows).toEqual(_.sortBy(prevRows, amountOfRow))
+    },
+  )
 })
 
 async function getTableRows(): Promise<string[][]> {

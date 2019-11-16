@@ -9,7 +9,7 @@
     "jimp": "^0.8.5",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
-    "prescript": "^0.555555.0",
+    "prescript": "0.5555555.0-1",
     "selenium-webdriver": "3",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
