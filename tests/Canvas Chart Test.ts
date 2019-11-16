@@ -1,8 +1,5 @@
-import { action, to, getCurrentState } from 'prescript'
-import { query, useApp, getDriver, compareScreenshots } from '../lib'
-import * as TestingLibraryDom from '@testing-library/dom'
-import expect from 'expect'
-import _ from 'lodash'
+import { action } from 'prescript'
+import { compareScreenshots, getDriver, query, useApp } from '../lib'
 
 useApp()
 

@@ -2,14 +2,14 @@ import { useWebDriver, getDriver, query } from './BrowserAutomation'
 import { action } from 'prescript'
 import { By } from 'selenium-webdriver'
 
-export function useLoginPage() {
+export function useLoginPage(flags: string = '') {
   useWebDriver()
   action`Go to app`(async () => {
-    await getDriver().get('https://demo.applitools.com/hackathon.html')
+    await getDriver().get('https://demo.applitools.com/hackathon.html' + flags)
   })
 }
 
-export function useApp() {
+export function useApp(flags: string = '') {
   useLoginPage()
   login()
 }
