@@ -1,7 +1,8 @@
-import { writeFileSync, existsSync } from 'fs'
+import { writeFileSync, existsSync, readFileSync } from 'fs'
 import mkdirp from 'mkdirp'
 import jimp from 'jimp'
 import { dirname } from 'path'
+import { getCurrentContext } from 'prescript'
 
 export async function compareScreenshots(title: string, image: Buffer) {
   const baselinePath = `screenshots/baseline/${title}.png`
@@ -15,6 +16,16 @@ export async function compareScreenshots(title: string, image: Buffer) {
   const baseline = await jimp.read(baselinePath)
   const checkpoint = await jimp.read(checkpointPath)
   if (areImagesDifferent(baseline, checkpoint)) {
+    getCurrentContext().attach(
+      'Baseline',
+      readFileSync(baselinePath),
+      'image/png',
+    )
+    getCurrentContext().attach(
+      'Checkpoint',
+      readFileSync(checkpointPath),
+      'image/png',
+    )
     throw new Error(
       `Screenshot "${checkpointPath}" has changed. ` +
         `If it is correct, please replace the baseline image with the checkpoint image.`,
