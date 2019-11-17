@@ -14,7 +14,7 @@ let failures = 0
 process.env.ALLURE_RESULTS_DIR = 'allure-results'
 
 // Set up Applitools Batch ID
-process.env.APPLITOOLS_BATCH_ID = Date.now()
+process.env.APPLITOOLS_BATCH_ID = 'batch-' + Date.now()
 
 const files = glob.sync('tests/**/*.ts')
 for (const [index, file] of files.entries()) {
