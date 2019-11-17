@@ -10,7 +10,7 @@ declare module '@applitools/eyes-selenium' {
     ): Promise<WebDriver>
     closeAsync(): Promise<void>
     abortIfNotClosed(): Promise<void>
-    setBatch(batchName: string): void
+    setBatch(batchName: string, batchId: string): void
     check(checkpointName: string, target: any): Promise<void>
   }
 

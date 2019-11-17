@@ -22,7 +22,10 @@ export function useWebDriver() {
 }
 
 export async function setupDriver() {
-  getCurrentState().driver = await new Builder().forBrowser('chrome').build()
+  getCurrentState().driver = await new Builder()
+    .usingServer(process.env.SELENIUM_SERVER || 'http://localhost:4444/wd/hub')
+    .forBrowser('chrome')
+    .build()
 }
 
 export function getDriver(): WebDriver {
@@ -33,15 +36,20 @@ export async function quitDriver() {
   await getDriver().quit()
 }
 
-export async function query(
-  querier: (q: typeof TestingLibraryDom) => Element | PromiseLike<Element>,
-): Promise<WebElement> {
+export async function ensureTestingLibraryDomInstalled() {
   const driver = getDriver()
   if (
     (await driver.executeScript(() => typeof TestingLibraryDom)) === 'undefined'
   ) {
     await driver.executeScript(TESTING_LIBRARY_DOM_SRC)
   }
+}
+
+export async function query(
+  querier: (q: typeof TestingLibraryDom) => Element | PromiseLike<Element>,
+): Promise<WebElement> {
+  const driver = getDriver()
+  await ensureTestingLibraryDomInstalled()
 
   type SignalStatus = 'resolved' | 'rejected'
   type Signal = { value: any; status: SignalStatus }

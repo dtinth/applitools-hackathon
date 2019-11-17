@@ -6,13 +6,20 @@
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.12.8",
     "@types/selenium-webdriver": "^4.0.5",
+    "allure-commandline": "^2.13.0",
+    "chalk": "^3.0.0",
     "expect": "^24.9.0",
+    "glob": "^7.1.6",
     "jimp": "^0.8.5",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "prescript": "0.5555555.0-1",
+    "rimraf": "^3.0.0",
     "selenium-webdriver": "^4.0.0-alpha.5",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "test": "node scripts/run-tests.js"
   }
 }

@@ -1,5 +1,10 @@
 import { action, to, getCurrentState } from 'prescript'
-import { query, useApp, getDriver } from '../../lib'
+import {
+  query,
+  useApp,
+  getDriver,
+  ensureTestingLibraryDomInstalled,
+} from '../../lib'
 import * as TestingLibraryDom from '@testing-library/dom'
 import expect from 'expect'
 import _ from 'lodash'
@@ -24,6 +29,7 @@ to`Verify that sorting works properly`(() => {
 })
 
 async function getTableRows(): Promise<string[][]> {
+  await ensureTestingLibraryDomInstalled()
   const rows = await getDriver().executeScript(() => {
     const trs: HTMLTableRowElement[] = Array.from(
       document
