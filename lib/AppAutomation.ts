@@ -5,9 +5,7 @@ import { By } from 'selenium-webdriver'
 export function useLoginPage(flags: string = '') {
   useWebDriver()
   action`Go to app`(async () => {
-    await getDriver().get(
-      'https://demo.applitools.com/hackathonV2.html' + flags,
-    )
+    await getDriver().get('https://demo.applitools.com/hackathon.html' + flags)
   })
 }
 
