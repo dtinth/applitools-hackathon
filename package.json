@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@applitools/eyes-selenium": "^4.31.19",
     "@testing-library/dom": "^6.10.1",
     "@types/lodash": "^4.14.148",
     "@types/mkdirp": "^0.5.2",

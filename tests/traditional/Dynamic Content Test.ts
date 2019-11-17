@@ -1,7 +1,7 @@
 import expect from 'expect'
 import { action } from 'prescript'
 import { By } from 'selenium-webdriver'
-import { getDriver, useApp } from '../lib'
+import { getDriver, useApp } from '../../lib'
 
 useApp('?showAd=true')
 

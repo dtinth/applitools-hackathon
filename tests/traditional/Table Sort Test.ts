@@ -1,5 +1,5 @@
 import { action, to, getCurrentState } from 'prescript'
-import { query, useApp, getDriver } from '../lib'
+import { query, useApp, getDriver } from '../../lib'
 import * as TestingLibraryDom from '@testing-library/dom'
 import expect from 'expect'
 import _ from 'lodash'

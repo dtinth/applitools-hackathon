@@ -1,5 +1,5 @@
 import { action, to, independent } from 'prescript'
-import { query, useLoginPage, login } from '../lib'
+import { query, useLoginPage, login } from '../../lib'
 import expect from 'expect'
 
 useLoginPage()

@@ -1,6 +1,6 @@
 import { action, to, independent } from 'prescript'
 import { By } from 'selenium-webdriver'
-import { getDriver, query, useLoginPage } from '../lib'
+import { getDriver, query, useLoginPage } from '../../lib'
 
 useLoginPage()
 

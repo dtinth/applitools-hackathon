@@ -1,5 +1,5 @@
 import { action } from 'prescript'
-import { compareScreenshots, getDriver, query, useApp } from '../lib'
+import { compareScreenshots, getDriver, query, useApp } from '../../lib'
 
 useApp()
 
