@@ -2,7 +2,9 @@
 
 - This submission uses **Selenium WebDriver for JavaScript** with **Applitools Eyes SDK for JavaScript**,
   running against [**prescript**](https://prescript.netlify.com/) test runner,
-  which allows for
+  which allows for better test development experience.
+
+- It is continuously [tested on CircleCI](https://circleci.com/gh/dtinth/applitools-hackathon).
 
 - For both traditional and Visual AI-based testing,
   to ensure consistent user experience of running the tests,
