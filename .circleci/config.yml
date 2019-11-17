@@ -21,3 +21,5 @@ jobs:
             - ~/.cache/yarn
       - run:
           command: yarn test
+          environment:
+            FORCE_COLOR: '1'
