@@ -22,6 +22,7 @@ jobs:
       - run:
           name: Run test for V1
           command: yarn test
+          when: always
           environment:
             FORCE_COLOR: '1'
             HACKATHON_APP_VERSION: 'V1'
@@ -29,10 +30,12 @@ jobs:
           name: Generate report for V1
           command: |
             mkdir -p /tmp/allure-report/V1
-            allure generate allure-results -o "/tmp/allure-report/V1"
+            yarn allure generate allure-results -o "/tmp/allure-report/V1"
+          when: always
       - run:
           name: Run test for V2
           command: yarn test
+          when: always
           environment:
             FORCE_COLOR: '1'
             HACKATHON_APP_VERSION: 'V2'
@@ -40,7 +43,8 @@ jobs:
           name: Generate report for V2
           command: |
             mkdir -p /tmp/allure-report/V2
-            allure generate allure-results -o "/tmp/allure-report/V2"
+            yarn allure generate allure-results -o "/tmp/allure-report/V2"
+          when: always
       - store_artifacts:
           path: /tmp/allure-report
           prefix: allure-report
