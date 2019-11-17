@@ -17,7 +17,7 @@ export function useEyes() {
   action`Set up Applitools Eyes`(async () => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
-    eyes.setBatch('Hackathon', process.env.APPLITOOLS_BATCH_ID)
+    eyes.setBatch('Hackathon', process.env.APPLITOOLS_BATCH_ID!)
     getCurrentState().visualAITesting = {
       eyes,
       runner,
