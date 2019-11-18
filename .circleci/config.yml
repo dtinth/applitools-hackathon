@@ -20,28 +20,16 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Run test for V1
+          name: Run test
           command: yarn test
           when: always
           environment:
             HACKATHON_APP_VERSION: 'V1'
       - run:
-          name: Generate report for V1
+          name: Generate report
           command: |
-            mkdir -p /tmp/allure-report/V1
-            yarn allure generate allure-results -o "/tmp/allure-report/V1"
-          when: always
-      - run:
-          name: Run test for V2
-          command: yarn test
-          when: always
-          environment:
-            HACKATHON_APP_VERSION: 'V2'
-      - run:
-          name: Generate report for V2
-          command: |
-            mkdir -p /tmp/allure-report/V2
-            yarn allure generate allure-results -o "/tmp/allure-report/V2"
+            mkdir -p /tmp/allure-report
+            yarn allure generate allure-results -o "/tmp/allure-report"
           when: always
       - store_artifacts:
           path: /tmp/allure-report
