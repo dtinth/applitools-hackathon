@@ -37,10 +37,16 @@ export function withEyesOpen(testName: string, f: () => void) {
   })
 }
 
-export function checkWithEyes(checkpointName: string) {
+export function checkWithEyes(
+  checkpointName: string,
+  { fullPage = false } = {},
+) {
   action`Check ${checkpointName} with Visual AI`(async () => {
     const { eyes } = getVisualAITestingState()
-    await eyes.check('App Window', Target.window())
+    await eyes.check(
+      'App Window',
+      fullPage ? Target.window().fully() : Target.window(),
+    )
   })
 }
 
