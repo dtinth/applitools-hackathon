@@ -16,6 +16,9 @@ process.env.ALLURE_RESULTS_DIR = 'allure-results'
 // Set up Applitools Batch
 process.env.APPLITOOLS_BATCH_ID = 'batch-' + Date.now()
 
+// Disable colors when generating Allure results
+process.env.FORCE_COLOR = '0'
+
 const files = glob.sync('tests/**/*.ts')
 for (const [index, file] of files.entries()) {
   console.log(
