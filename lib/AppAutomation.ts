@@ -15,7 +15,7 @@ export function useLoginPage(flags: string = '') {
 }
 
 export function useApp(flags: string = '') {
-  useLoginPage()
+  useLoginPage(flags)
   login()
 }
 
