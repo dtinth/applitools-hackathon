@@ -38,21 +38,41 @@
 
   For social login buttons, there are no semantic HTML to distinguish between each button. This means people with blindness will have a hard time finding this button. To me, this issue highlights the lack of attention to accessibility than to the shortcomings of traditional testing methods. Ideally, the markup should be fixed so that it becomes more accessible, both to people with disability, and as a result, to automated tests.
 
+  Here, the traditional test detects the changes in wording of heading, labels, placeholder text, and missing social login buttons.
+
+  ![](docs/images/allure-login-ui.png)
+
 - **Visual AI approach:** I captured the 1st version of the login form as baseline, and the changes can be compared and verified in Applitools Eyes’ Dashboard.
 
   Applitools Eyes also caught that the Username and Password icons are missing. The traditional approach couldn’t catch that without an explicit check of icons.
 
-### Login Page UI Elements Test
+  ![](docs/images/applitools-login-ui.png)
+
+### Data-Driven Elements Test
 
 - **Non visual AI approach:** Since in V2, both the label and placeholder text of the Username and Password fields have changed, I have to fall back to using DOM IDs, which is less than ideal. For the alert message, a role of `alert` is available in the DOM, so that DOM Testing Library can easily target it. Unfortunately, we cannot check the layout of the alert (in V2, one of the alerts have its layout broken).
 
+  Here, the test detects the change in wording of the alert. In my opinion, the word “both” makes the sentence sound unnatural (I would have preferred it to say “Please enter your username and password” rather than “both”), so I am glad that my test caught this.
+
+  ![](docs/images/allure-data-driven.png)
+
 - **Visual AI approach:** Like the non visual AI approach, but instead of asserting the text in the alert, I captured the screenshot after performing the action.
+
+  Here, Applitools can catch the case where the alert is misplaced.
+
+  ![](docs/images/applitools-data-driven.png)
 
 ### Table Sort Test
 
 - **Non visual AI approach:** The test remembers the table’s data before clicking the Amount header to sort. After sorting, it then compares the table rows with what it expected the result to be.
 
+  Here, the test can give a comparison between the expected table data and actual table data.
+
+  ![](docs/images/allure-table-sort.png)
+
 - **Visual AI approach:** It takes the snapshot of the page before and after sorting.
+
+  ![](docs/images/applitools-table-sort.png)
 
 ### Canvas Chart Test
 
@@ -60,13 +80,23 @@
 
   I capture the screenshot of V1 as the baseline, and should the screenshot changes, the test would fail. I can delete the baseline screenshot and re-run the test to regenerate the baseline. In practice, since the screenshot is committed to the Git repository, we can review the changes by comparing the screenshots during code review (GitHub supports viewing basic image diffs).
 
+  ![](docs/images/allure-canvas-chart.png)
+
 - **Visual AI approach:** Like the non visual AI approach but with Applitools. It highlights the changed/mismatched regions clearly and allows me to mark the snapshot as :+1: or :-1: without having to rerun the tests and updating the snapshots in the repository (a common pain point when doing snapshot testing).
+
+  ![](docs/images/applitools-canvas-chart.png)
 
 ### Dynamic Content Test
 
 - **Non visual AI approach:** I asserted that the number of ad images displayed on the page is correct (should be 2).
 
+  Here, the test asserted that there should be two ads, but one went missing.
+
+  ![](docs/images/allure-dynamic-content.png)
+
 - **Visual AI approach:** A layout region can ignore changes to the baseline but mark the test as unchecked.
+
+  ![](docs/images/applitools-dynamic-content.png)
 
 ## Prerequisites
 
