@@ -44,7 +44,7 @@ export function checkWithEyes(
   action`Check ${checkpointName} with Visual AI`(async () => {
     const { eyes } = getVisualAITestingState()
     await eyes.check(
-      'App Window',
+      checkpointName,
       fullPage ? Target.window().fully() : Target.window(),
     )
   })
