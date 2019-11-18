@@ -24,7 +24,6 @@ jobs:
           command: yarn test
           when: always
           environment:
-            FORCE_COLOR: '1'
             HACKATHON_APP_VERSION: 'V1'
       - run:
           name: Generate report for V1
@@ -37,7 +36,6 @@ jobs:
           command: yarn test
           when: always
           environment:
-            FORCE_COLOR: '1'
             HACKATHON_APP_VERSION: 'V2'
       - run:
           name: Generate report for V2
