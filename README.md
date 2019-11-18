@@ -24,14 +24,24 @@
    yarn
    ```
 
-1. Run a Selenium Server:
+2. Run a Selenium Server:
 
    ```
-   docker run -d -p 4444:4444 -p 5901:5900 --name selenium-chrome --network selenium -v /dev/shm:/dev/shm selenium/standalone-chrome-debug:3.141.59-xenon
+   docker run -d -p 4444:4444 -p 5901:5900 --name selenium-chrome -v /dev/shm:/dev/shm selenium/standalone-chrome-debug:3.141.59-xenon
    ```
 
    This will run a Selenium server in the background.
    Selenium API can be accessed at `http://localhost:4444` and to debug a running browser, you can connect to `vnc://:secret@localhost:5901`.
+
+## Environment variables
+
+Set these environment variables before running the test:
+
+| Variable                | Description                                                             |
+| ----------------------- | ----------------------------------------------------------------------- |
+| `APPLITOOLS_API_KEY`    | The API key used for Applitools Eyes                                    |
+| `SELENIUM_SERVER`       | The URL to Selenium Server (defaults to `http://localhost:4444/wd/hub`) |
+| `HACKATHON_APP_VERSION` | The hackathon app version to use (either `V1` or `V2`)                  |
 
 ## Running all tests
 
