@@ -4,12 +4,13 @@ import { By } from 'selenium-webdriver'
 
 export function useLoginPage(flags: string = '') {
   useWebDriver()
-  action`Go to app`(async () => {
-    const baseURL =
-      process.env.HACKATHON_APP_VERSION === 'V2'
-        ? 'https://demo.applitools.com/hackathonV2.html'
-        : 'https://demo.applitools.com/hackathon.html'
-    await getDriver().get(baseURL + flags)
+  const baseURL =
+    process.env.HACKATHON_APP_VERSION === 'V2'
+      ? 'https://demo.applitools.com/hackathonV2.html'
+      : 'https://demo.applitools.com/hackathon.html'
+  const url = baseURL + flags
+  action`Go to ${url}`(async () => {
+    await getDriver().get(url)
   })
 }
 
