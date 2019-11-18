@@ -1,10 +1,4 @@
-import {
-  action,
-  getCurrentState,
-  defer,
-  to,
-  getCurrentContext,
-} from 'prescript'
+import { action, getCurrentState, defer, to } from 'prescript'
 import { Eyes, ClassicRunner, Target } from '@applitools/eyes-selenium'
 import { getDriver } from './BrowserAutomation'
 
@@ -22,12 +16,6 @@ export function useEyes() {
       eyes,
       runner,
     } as VisualAITestingState
-  })
-  defer`Collect all test results from Applitools`(async () => {
-    const { runner } = getVisualAITestingState()
-    // Wait and collect all test results
-    const allTestResults = await runner.getAllTestResults()
-    getCurrentContext().log(String(allTestResults))
   })
 }
 

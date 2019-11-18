@@ -13,7 +13,7 @@ let failures = 0
 // Activate Allure
 process.env.ALLURE_RESULTS_DIR = 'allure-results'
 
-// Set up Applitools Batch ID
+// Set up Applitools Batch
 process.env.APPLITOOLS_BATCH_ID = 'batch-' + Date.now()
 
 const files = glob.sync('tests/**/*.ts')
@@ -23,6 +23,16 @@ for (const [index, file] of files.entries()) {
     failures > 0 ? chalk.red(`(${failures} failed)`) : '',
   )
   const result = spawnSync('yarn', ['prescript', file], {
+    stdio: 'inherit',
+  })
+  if (result.status === 1) {
+    failures++
+  }
+}
+
+{
+  console.log(chalk.bold.inverse(` Closing test batch... `))
+  const result = spawnSync('node', ['scripts/close-batch.js'], {
     stdio: 'inherit',
   })
   if (result.status === 1) {
