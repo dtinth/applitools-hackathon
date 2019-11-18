@@ -24,7 +24,7 @@ jobs:
           command: yarn test
           when: always
           environment:
-            HACKATHON_APP_VERSION: 'V1'
+            HACKATHON_APP_VERSION: 'V2'
       - run:
           name: Generate report
           command: |
